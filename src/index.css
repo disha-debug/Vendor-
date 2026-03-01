@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 96%;
+    --foreground: 224 71% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 224 71% 4%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 262 83% 96%;
+    --accent-foreground: 262 83% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 30% 12%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 224 20% 16%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* Status badges: pending=amber, accepted=blue, completed=green, cancelled/rejected=red */
+    --status-pending: 38 92% 50%;
+    --status-accepted: 217 91% 50%;
+    --status-completed: 142 71% 45%;
+    --status-cancelled: 0 84% 60%;
+    --status-rejected: 0 84% 60%;
+
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 20% 98%;
+    --card: 224 30% 8%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 30% 8%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 224 30% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 224 30% 12%;
+    --muted-foreground: 215 16% 57%;
+    --accent: 262 83% 20%;
+    --accent-foreground: 262 83% 80%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 20% 16%;
+    --input: 224 20% 16%;
+    --ring: 262 83% 65%;
+    --status-pending: 38 92% 55%;
+    --status-accepted: 217 91% 55%;
+    --status-completed: 142 71% 45%;
+    --status-cancelled: 0 62% 50%;
+    --status-rejected: 0 62% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 75% 52%));
+  }
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(142 71% 45%), hsl(160 65% 40%));
+  }
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/60 shadow-sm;
+  }
+  .animate-in-fade {
+    animation: fade-in 0.35s ease-out;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  .card-hover-scale {
+    @apply transition-transform duration-200 hover:scale-[1.02];
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted-foreground) / 0.08) 50%, hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
